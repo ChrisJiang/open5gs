@@ -209,27 +209,27 @@ bool udm_nudr_dr_handle_subscription_authentication(
 #endif
 #endif
 
-            ogs_info("OPC [%x]", udm_ue->opc);
+            ogs_info("OPC");
             ogs_log_hexdump(OGS_LOG_INFO,
                 udm_ue->opc,
                 sizeof(udm_ue->opc));
 
-            ogs_info("AMF [%x]", udm_ue->amf);
+            ogs_info("AMF");
             ogs_log_hexdump(OGS_LOG_INFO,
                 udm_ue->amf,
                 sizeof(udm_ue->amf));
                 
-            ogs_info("K [%x]", udm_ue->k);
+            ogs_info("K");
             ogs_log_hexdump(OGS_LOG_INFO,
                 udm_ue->k,
                 sizeof(udm_ue->k));
                 
-            ogs_info("SQN [%x]", udm_ue->sqn);
+            ogs_info("SQN");
             ogs_log_hexdump(OGS_LOG_INFO,
                 udm_ue->sqn,
                 sizeof(udm_ue->sqn));
                 
-            ogs_info("RAND [%x]", udm_ue->rand);
+            ogs_info("RAND");
             ogs_log_hexdump(OGS_LOG_INFO,
                 udm_ue->rand,
                 sizeof(udm_ue->rand));
@@ -237,15 +237,30 @@ bool udm_nudr_dr_handle_subscription_authentication(
             milenage_generate(udm_ue->opc, udm_ue->amf, udm_ue->k, udm_ue->sqn,
                     udm_ue->rand, autn, ik, ck, ak, xres, &xres_len);
 
-            ogs_info("AUTN [%x]", autn);
+            ogs_info("AUTN");
             ogs_log_hexdump(OGS_LOG_INFO,
                 autn,
                 sizeof(autn));
                 
-            ogs_info("AK [%x]", ak);
+            ogs_info("IK");
+            ogs_log_hexdump(OGS_LOG_INFO,
+                ik,
+                sizeof(ik));
+
+            ogs_info("CK");
+            ogs_log_hexdump(OGS_LOG_INFO,
+                ck,
+                sizeof(ck));
+                
+            ogs_info("AK");
             ogs_log_hexdump(OGS_LOG_INFO,
                 ak,
                 sizeof(ak));
+
+            ogs_info("XRES");
+            ogs_log_hexdump(OGS_LOG_INFO,
+                xres,
+                xres_len);
 
             ogs_info("SNN [%s]", udm_ue->serving_network_name);
 
