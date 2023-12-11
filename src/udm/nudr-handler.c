@@ -209,8 +209,45 @@ bool udm_nudr_dr_handle_subscription_authentication(
 #endif
 #endif
 
+            ogs_info("OPC [%x]", udm_ue->opc);
+            ogs_log_hexdump(OGS_LOG_INFO,
+                udm_ue->opc,
+                sizeof(udm_ue->opc));
+
+            ogs_info("AMF [%x]", udm_ue->amf);
+            ogs_log_hexdump(OGS_LOG_INFO,
+                udm_ue->amf,
+                sizeof(udm_ue->amf));
+                
+            ogs_info("K [%x]", udm_ue->k);
+            ogs_log_hexdump(OGS_LOG_INFO,
+                udm_ue->k,
+                sizeof(udm_ue->k));
+                
+            ogs_info("SQN [%x]", udm_ue->sqn);
+            ogs_log_hexdump(OGS_LOG_INFO,
+                udm_ue->sqn,
+                sizeof(udm_ue->sqn));
+                
+            ogs_info("RAND [%x]", udm_ue->rand);
+            ogs_log_hexdump(OGS_LOG_INFO,
+                udm_ue->rand,
+                sizeof(udm_ue->rand));
+
             milenage_generate(udm_ue->opc, udm_ue->amf, udm_ue->k, udm_ue->sqn,
                     udm_ue->rand, autn, ik, ck, ak, xres, &xres_len);
+
+            ogs_info("AUTN [%x]", autn);
+            ogs_log_hexdump(OGS_LOG_INFO,
+                autn,
+                sizeof(autn));
+                
+            ogs_info("AK [%x]", ak);
+            ogs_log_hexdump(OGS_LOG_INFO,
+                ak,
+                sizeof(ak));
+
+            ogs_info("SNN [%s]", udm_ue->serving_network_name);
 
             ogs_assert(udm_ue->serving_network_name);
 
