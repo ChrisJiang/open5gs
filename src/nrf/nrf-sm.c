@@ -268,10 +268,14 @@ void nrf_state_operational(ogs_fsm_t *s, nrf_event_t *e)
             ogs_assert(nf_instance);
 
             ogs_warn("[%s] No heartbeat", nf_instance->id);
+
+            ogs_warn("[%s] Ignoring No heartbeat", nf_instance->id);            
+            /* temprarily disable heartbeat 
             nf_instance->nf_status = OpenAPI_nf_status_SUSPENDED;
 
             nrf_nf_fsm_fini(nf_instance);
             ogs_sbi_nf_instance_remove(nf_instance);
+            */
 
             /* FIXME : Remove unnecessary Client */
             break;

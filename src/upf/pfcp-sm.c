@@ -328,7 +328,11 @@ void upf_pfcp_state_associated(ogs_fsm_t *s, upf_event_t *e)
 
         ogs_warn("No Heartbeat from SMF [%s]:%d",
                     OGS_ADDR(addr, buf), OGS_PORT(addr));
+        
+        ogs_warn("Ignoring No heartbeat from SMF");            
+        /* temprarily disable heartbeat 
         OGS_FSM_TRAN(s, upf_pfcp_state_will_associate);
+        */
         break;
     default:
         ogs_error("Unknown event %s", upf_event_get_name(e));
