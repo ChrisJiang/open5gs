@@ -268,7 +268,17 @@ static ogs_sbi_server_t *ogs_sbi_server_find_by_interface(
 
 ogs_sbi_server_t *ogs_sbi_server_first(void)
 {
-    return ogs_sbi_server_find_by_interface(NULL, NULL);
+    ogs_sbi_server_t *server = NULL;
+    server = ogs_sbi_server_find_by_interface(NULL, NULL);
+    
+    if(server != NULL)
+    {
+        ogs_info("[ogs_sbi_server_first] server.scheme [%s]", server->scheme);
+        ogs_info("[ogs_sbi_server_first] server.advertise.fqdn [%s]", server->advertise->fqdn);
+        ogs_info("[ogs_sbi_server_first] server.advertise.hostname [%s]", server->advertise->hostname);
+    }
+
+    return server;
 }
 
 ogs_sbi_server_t *ogs_sbi_server_next(ogs_sbi_server_t *current)
