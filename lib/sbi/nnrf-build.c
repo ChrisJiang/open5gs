@@ -182,7 +182,7 @@ OpenAPI_nf_profile_t *ogs_nnrf_nfm_build_nf_profile(
                     nf_instance->ipv4[i]->ogs_sa_family,
                     htobe32(nf_instance->ipv4[i]->sin.sin_addr.s_addr),
                     nf_instance->ipv4[i]->ogs_sin_port);
-            ogs_info("[] IPv4 [family:%d, addr:%x, port:%d]",
+            ogs_info("[ogs_nnrf_nfm_build_nf_profile()] IPv4 [family:%d, addr:%x, port:%d]",
                     nf_instance->ipv4[i]->ogs_sa_family,
                     htobe32(nf_instance->ipv4[i]->sin.sin_addr.s_addr),
                     nf_instance->ipv4[i]->ogs_sin_port);
@@ -194,6 +194,7 @@ OpenAPI_nf_profile_t *ogs_nnrf_nfm_build_nf_profile(
                 OpenAPI_list_free(Ipv4AddrList);
                 return NULL;
             }
+            ogs_info("[ogs_nnrf_nfm_build_nf_profile()] IPv4 Address [%s]", ipstr);
             OpenAPI_list_add(Ipv4AddrList, ipstr);
         }
     }
