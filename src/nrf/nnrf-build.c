@@ -64,7 +64,9 @@ ogs_sbi_request_t *nrf_nnrf_nfm_build_nf_status_notify(
     header.resource.component[1] = nf_instance->id;
 
     NotificationData->nf_instance_uri = ogs_sbi_server_uri(server, &header);
-    ogs_info("[nrf_nnrf_nfm_build_nf_status_notify] nf_instance_uri [%s]", NotificationData->nf_instance_uri);
+
+    ogs_info("[nrf_nnrf_nfm_build_nf_status_notify()] nf_instance_uri [%s]", NotificationData->nf_instance_uri);
+
     if (!server) {
         ogs_error("No nf_instance_uri");
         goto end;
@@ -82,8 +84,8 @@ ogs_sbi_request_t *nrf_nnrf_nfm_build_nf_status_notify(
             goto end;
         }
     }
-    ogs_info("[nrf_nnrf_nfm_build_nf_status_notify] nf_profile.nf_type [%s]", OpenAPI_nf_type_ToString(NotificationData->nf_profile->nf_type));
-    ogs_info("[nrf_nnrf_nfm_build_nf_status_notify] nf_profile.nf_status [%s]", OpenAPI_nf_status_ToString(NotificationData->nf_profile->nf_status));
+    ogs_info("[nrf_nnrf_nfm_build_nf_status_notify()] nf_profile.nf_type [%s]", OpenAPI_nf_type_ToString(NotificationData->nf_profile->nf_type));
+    ogs_info("[nrf_nnrf_nfm_build_nf_status_notify()] nf_profile.nf_status [%s]", OpenAPI_nf_status_ToString(NotificationData->nf_profile->nf_status));
 
     message.NotificationData = NotificationData;
 

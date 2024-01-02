@@ -273,7 +273,7 @@ ogs_sbi_server_t *ogs_sbi_server_first(void)
     
     if(server != NULL)
     {
-        ogs_info("[ogs_sbi_server_first] server.advertise.fqdn[%s] hostname[%s]",
+        ogs_info("[ogs_sbi_server_first()] server.advertise.fqdn[%s] hostname[%s]",
                 server->advertise->fqdn,
                 server->advertise->hostname);
     }
