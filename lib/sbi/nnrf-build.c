@@ -61,6 +61,11 @@ ogs_sbi_request_t *ogs_nnrf_nfm_build_register(void)
         goto end;
     }
 
+    ogs_info("[ogs_nnrf_nfm_build_register] NF-Type[%s] NF-Status[%s] Fqdn[%s]",
+                OpenAPI_nf_type_ToString(NFProfile->nf_type),
+                OpenAPI_nf_status_ToString(NFProfile->nf_status),
+                NFProfile->fqdn);
+
     message.NFProfile = NFProfile;
 
     request = ogs_sbi_build_request(&message);
@@ -114,9 +119,10 @@ OpenAPI_nf_profile_t *ogs_nnrf_nfm_build_nf_profile(
     NFProfile->nf_type = nf_instance->nf_type;
     NFProfile->nf_status = nf_instance->nf_status;
 
-    ogs_trace("[%s] ogs_nnrf_nfm_build_nf_profile()", nf_instance->id);
-
-    ogs_trace("NF-Type[%s] NF-Status[%s] IPv4[%d] IPv6[%d]",
+    // ogs_trace
+    ogs_info("[%s] ogs_nnrf_nfm_build_nf_profile()", nf_instance->id);
+    // ogs_trace
+    ogs_info("NF-Type[%s] NF-Status[%s] IPv4[%d] IPv6[%d]",
                 OpenAPI_nf_type_ToString(nf_instance->nf_type),
                 OpenAPI_nf_status_ToString(nf_instance->nf_status),
                 nf_instance->num_of_ipv4, nf_instance->num_of_ipv6);
@@ -168,7 +174,8 @@ OpenAPI_nf_profile_t *ogs_nnrf_nfm_build_nf_profile(
 
     for (i = 0; i < nf_instance->num_of_ipv4; i++) {
         if (nf_instance->ipv4[i]) {
-            ogs_trace("IPv4 [family:%d, addr:%x, port:%d]",
+            // ogs_trace
+            ogs_info("IPv4 [family:%d, addr:%x, port:%d]",
                     nf_instance->ipv4[i]->ogs_sa_family,
                     htobe32(nf_instance->ipv4[i]->sin.sin_addr.s_addr),
                     nf_instance->ipv4[i]->ogs_sin_port);

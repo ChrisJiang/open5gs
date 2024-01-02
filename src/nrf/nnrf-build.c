@@ -56,9 +56,6 @@ ogs_sbi_request_t *nrf_nnrf_nfm_build_nf_status_notify(
         ogs_error("No server");
         goto end;
     }
-    ogs_info("[nrf_nnrf_nfm_build_nf_status_notify] server.scheme [%s]", server->scheme);
-    ogs_info("[nrf_nnrf_nfm_build_nf_status_notify] server.advertise.fqdn [%s]", server->advertise->fqdn);
-    ogs_info("[nrf_nnrf_nfm_build_nf_status_notify] server.advertise.hostname [%s]", server->advertise->hostname);
 
     memset(&header, 0, sizeof(header));
     header.service.name = (char *)OGS_SBI_SERVICE_NAME_NNRF_NFM;
@@ -85,8 +82,8 @@ ogs_sbi_request_t *nrf_nnrf_nfm_build_nf_status_notify(
             goto end;
         }
     }
-    ogs_info("[nrf_nnrf_nfm_build_nf_status_notify] nf_profile.nf_type [%s]", NotificationData->nf_profile->nf_type);
-    ogs_info("[nrf_nnrf_nfm_build_nf_status_notify] nf_profile.nf_status [%s]", NotificationData->nf_profile->nf_status);
+    ogs_info("[nrf_nnrf_nfm_build_nf_status_notify] nf_profile.nf_type [%s]", OpenAPI_nf_type_ToString(NotificationData->nf_profile->nf_type));
+    ogs_info("[nrf_nnrf_nfm_build_nf_status_notify] nf_profile.nf_status [%s]", OpenAPI_nf_status_ToString(NotificationData->nf_profile->nf_status));
 
     message.NotificationData = NotificationData;
 
